@@ -70,27 +70,45 @@ Two other things are claims, not facts, so change them if they are wrong:
 
 ## Published
 
-Live from this repository: **https://wpxmunna.github.io/gangerpar/**
+**https://www.gangerpar.com/**
 
-Every push to `main` republishes it. There is nothing to build: the workflow in
-`.github/workflows/pages.yml` uploads the repository as it stands.
+The domain is in `CNAME`, and the DNS records it needs are at the registrar
+(Namecheap), not here:
 
+| Type | Host | Value |
+| --- | --- | --- |
+| CNAME | `www` | `wpxmunna.github.io.` |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+
+The four A records are what make the bare `gangerpar.com` redirect to `www`.
+Namecheap's default parking records — the `www` CNAME to
+`parkingpage.namecheap.com` and the URL redirect on `@` — have to come out, or
+they win over these.
+
+Every push to `main` republishes the site. There is nothing to build: the
+workflow in `.github/workflows/pages.yml` uploads the repository as it stands.
 It does not use the legacy Jekyll publisher, which failed on this repository
-twice and reported only *Page build failed* with no log. `.nojekyll` is still
-there so the files are never run through Jekyll either way, and `404.html` is
-served for any wrong address.
+twice and reported only *Page build failed* with no log. `.nojekyll` keeps the
+files away from Jekyll either way, and `404.html` is served for any wrong
+address.
 
-### Moving it to its own domain
+`https://wpxmunna.github.io/gangerpar/` redirects here, so old links keep
+working.
 
-Add a `CNAME` file next to `index.html` holding the bare domain
-(`gangerpar.com`), point that domain's DNS at the GitHub Pages addresses
-(`185.199.108.153` through `185.199.111.153`), and set it under **Settings →
-Pages**. Nothing in the markup has to change: every link and image path is
-relative, so the site works at the root and under `/gangerpar/` alike.
+### If the domain ever has to come off
 
-A custom domain set on the *account's* user site (`wpxmunna.github.io`) also
-redirects this project's URLs to `<that domain>/gangerpar/` — so if one is ever
-added there, its DNS has to point at GitHub or this site becomes unreachable.
+Delete `CNAME`, push, and clear the custom domain under **Settings → Pages**.
+The site returns to `https://wpxmunna.github.io/gangerpar/` — every link and
+image path is relative, so nothing in the markup changes either way. The three
+absolute URLs are the canonical link and the Open Graph tags in `index.html`,
+which have to be absolute to work at all.
+
+Note that a custom domain set on the *account's* user site (`wpxmunna.github.io`)
+redirects this project's URLs to `<that domain>/gangerpar/`. If one is ever added
+there, its DNS has to point at GitHub or this site becomes unreachable.
 
 ## Files
 
