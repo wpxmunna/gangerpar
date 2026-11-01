@@ -68,27 +68,26 @@ Two other things are claims, not facts, so change them if they are wrong:
 - the nine items and their seasons are what a riverside organic shop usually
   carries. Cut what you will not sell — an item on this list is a promise.
 
-## Publishing to GitHub Pages
+## Published
 
-The site is plain files with relative links, so it works at any path — a project
-repo (`user.github.io/repo/`), a user site, or a custom domain — with nothing to
-configure.
+Live from this repository: **https://wpxmunna.github.io/gangerpar/**
 
-```bash
-cd gangerpar
-git init && git add -A && git commit -m "গাঙের পাড়: coming-soon site"
-gh repo create gangerpar --public --source=. --push
-```
+Pages is already configured — *deploy from a branch*, `main`, `/` (root). Every
+push to `main` republishes within a minute or two. There is no build step and no
+workflow: the files in the repository are the site.
 
-Then in the repository: **Settings → Pages → Build and deployment → Deploy from
-a branch → `main` / `(root)`**. The first build takes a minute or two.
+The account also has a Pages custom domain, so the same files are served at
+`http://ideateaching.me/gangerpar/`.
 
-`.nojekyll` is already in place, which stops Pages running the files through
-Jekyll. `404.html` is served for any wrong address.
+`.nojekyll` stops Pages running the files through Jekyll. `404.html` is served
+for any wrong address.
 
-For a custom domain, add a `CNAME` file holding the bare domain
-(`gangerpar.com`) next to `index.html`, then set the domain under Settings →
-Pages.
+### Moving it to its own domain
+
+Add a `CNAME` file next to `index.html` holding the bare domain
+(`gangerpar.com`), push, and set the domain under **Settings → Pages**. Nothing
+in the markup has to change: every link and image path is relative, so the site
+works at the root and under `/gangerpar/` alike.
 
 ## Files
 
