@@ -72,22 +72,25 @@ Two other things are claims, not facts, so change them if they are wrong:
 
 Live from this repository: **https://wpxmunna.github.io/gangerpar/**
 
-Pages is already configured — *deploy from a branch*, `main`, `/` (root). Every
-push to `main` republishes within a minute or two. There is no build step and no
-workflow: the files in the repository are the site.
+Every push to `main` republishes it. There is nothing to build: the workflow in
+`.github/workflows/pages.yml` uploads the repository as it stands.
 
-The account also has a Pages custom domain, so the same files are served at
-`http://ideateaching.me/gangerpar/`.
-
-`.nojekyll` stops Pages running the files through Jekyll. `404.html` is served
-for any wrong address.
+It does not use the legacy Jekyll publisher, which failed on this repository
+twice and reported only *Page build failed* with no log. `.nojekyll` is still
+there so the files are never run through Jekyll either way, and `404.html` is
+served for any wrong address.
 
 ### Moving it to its own domain
 
 Add a `CNAME` file next to `index.html` holding the bare domain
-(`gangerpar.com`), push, and set the domain under **Settings → Pages**. Nothing
-in the markup has to change: every link and image path is relative, so the site
-works at the root and under `/gangerpar/` alike.
+(`gangerpar.com`), point that domain's DNS at the GitHub Pages addresses
+(`185.199.108.153` through `185.199.111.153`), and set it under **Settings →
+Pages**. Nothing in the markup has to change: every link and image path is
+relative, so the site works at the root and under `/gangerpar/` alike.
+
+A custom domain set on the *account's* user site (`wpxmunna.github.io`) also
+redirects this project's URLs to `<that domain>/gangerpar/` — so if one is ever
+added there, its DNS has to point at GitHub or this site becomes unreachable.
 
 ## Files
 
