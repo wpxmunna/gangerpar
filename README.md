@@ -52,15 +52,16 @@ page is still complete** — the gutter is simply empty.
 
 ## Before it goes live
 
-Two links in `index.html` are placeholders. Search for `EDIT`:
+The Facebook button points at the real page,
+[facebook.com/gangerpar.bd](https://www.facebook.com/gangerpar.bd). **The email
+address beside it does not** — search `EDIT` in `index.html`:
 
 ```html
-<a class="btn" href="https://www.facebook.com/gangerpar">ফেসবুক পেজ ফলো করুন</a>
 <a class="btn btn--quiet" href="mailto:hello@gangerpar.com">ইমেইল করুন</a>
 ```
 
-Put the real page and address in. A ready-to-use WhatsApp button sits commented
-out just below them — uncomment it and drop the number in.
+Mail sent there goes nowhere until that mailbox exists. A ready-to-use WhatsApp
+button sits commented out just below — uncomment it and drop the number in.
 
 Two other things are claims, not facts, so change them if they are wrong:
 
